@@ -28,3 +28,7 @@ val productList = listOf(
         imageRes = R.drawable.kopi
     )
 )
+
+fun getProductById(id: Int): Product? {
+    return productList.find { it.id == id }
+}

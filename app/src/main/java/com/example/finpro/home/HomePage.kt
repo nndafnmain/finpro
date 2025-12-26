@@ -2,6 +2,7 @@ package com.example.finpro.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -37,13 +38,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.finpro.R
 import com.example.finpro.products.CoffeeProductCard
 import com.example.finpro.products.Product
 import com.example.finpro.products.productList
 
 @Composable
-fun HomePage() {
+fun HomePage(navController: NavHostController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -134,7 +136,11 @@ fun HomePage() {
                                 title = product.name,
                                 price = "Rp ${product.price}",
                                 imageRes = product.imageRes,
-                                modifier = Modifier.width(200.dp)
+                                modifier = Modifier
+                                    .width(200.dp)
+                                    .clickable{
+                                        navController.navigate("detail/${product.id}")
+                                    }
                             )
                         }
                     }
